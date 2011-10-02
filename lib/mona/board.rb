@@ -19,8 +19,8 @@ class Mona::Board
 
   def threads
     @threads ||= connect.toutf8.lines.map do |line|
-      _, id, title, res = line.split(/^(\d+)\.dat<>(.+)\((\d+\))$/)
-      Mona::Thread.new(title: title.strip, res: res.to_i, id: id.to_i)
+      _, id, title, res_num = line.split(/^(\d+)\.dat<>(.+)\((\d+\))$/)
+      Mona::Thread.new(board: self, title: title.strip, res_num: res_num.to_i, id: id.to_i)
     end
   end
 end
