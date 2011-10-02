@@ -21,3 +21,7 @@ describe Mona::Board do
     its('first.board') { should eq subject }
   end
 end
+
+describe Mona::Board, 'real' do
+  subject { Mona::Board.new('hibari.2ch.net', 'prog') }
+end

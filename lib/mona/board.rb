@@ -1,7 +1,8 @@
-require 'net/http'
 require 'kconv'
 
 class Mona::Board
+  attr_reader :host, :board
+
   def initialize(host, board)
     @host = host
     @board = board
@@ -12,8 +13,9 @@ class Mona::Board
   end
 
   def connect
-    Net::HTTP.start(@host, 80) do |http|
-      http.get("/#{@board}/subject.txt").body
+    res = Mona::Client.new.get(dat_url)
+    if res.status == 200
+      res.content.toutf8
     end
   end
 
