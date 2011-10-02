@@ -20,7 +20,7 @@ Jeweler::Tasks.new do |gem|
   gem.summary = %Q{talk 2ch}
   gem.description = %Q{talk to 2ch library}
   gem.email = "masaki@hisme.net"
-  gem.authors = ["Yamada Masaki"]
+  gem.authors = ["masarakki"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
