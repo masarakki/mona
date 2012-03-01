@@ -1,4 +1,10 @@
+# -*- coding: utf-8 -*-
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+
+def test_dat
+  File.read(File.expand_path(File.dirname(__FILE__) + '/test_data/dat.txt'))
+end
+
 
 describe Mona::Thread do
 
@@ -16,14 +22,25 @@ describe Mona::Thread do
   describe :reload do
     it { 'hoge' }
   end
+
+  describe :parse_body do
+    subject { Mona::Thread.new }
+
+    it do
+      lambda {
+        subject.parse_body test_dat.toutf8
+      }.should change(subject, :title).from(nil).to('ウツ病のプログラマーを雇うスレ')
+    end
+  end
 end
 
 describe Mona::Thread, 'real' do
   subject { Mona::Thread.new(board: Mona::Board.new('hibari.2ch.net', 'prog'), id: 1210150210) }
   it "reload should change last_accessed_at" do
+    pending
     lambda {
       subject.reload
     }.should change(subject, :last_accessed_at)
-    subject.reload.should be nil
+    subject.reload.should be_nil
   end
 end

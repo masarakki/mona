@@ -28,6 +28,11 @@ class Mona::Thread
     @dat_size = args[:dat_size] || 0
   end
 
+  def parse_body(body)
+    first = body.lines.first.strip.split(/<>/)
+    @title = first[4] if first[4]
+  end
+
   def reload
     headers = {'If-Modified-Since' => @last_accessed_at.rfc2822, 'Range' => @dat_size}
     res = Mona::Client.new.get(dat_url, :header => headers)
@@ -36,8 +41,9 @@ class Mona::Thread
     when 200
       @dat_size += res.body.bytesize
       @last_accessed_at = Time.rfc2822(res.header["Last-Modified"].first)
-
-      res.body.toutf8
+      body = res.body.toutf8
+      pase_body body
+      body
     end
   end
 
