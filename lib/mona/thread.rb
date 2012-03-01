@@ -28,6 +28,13 @@ class Mona::Thread
     @dat_size = args[:dat_size] || 0
   end
 
+  def self.from_url(url)
+    matched = url.match %r{http://(.+)/test/read.cgi/(.+)/(.+)/}
+    raise "Invalid Url" unless matched
+    board = Mona::Board.new(matched[1], matched[2])
+    new(:board => board, :id => matched[3].to_i)
+  end
+
   def parse_body(body)
     first = body.lines.first.strip.split(/<>/)
     @title = first[4] if first[4]

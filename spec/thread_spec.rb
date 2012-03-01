@@ -32,6 +32,22 @@ describe Mona::Thread do
       }.should change(subject, :title).from(nil).to('ウツ病のプログラマーを雇うスレ')
     end
   end
+
+  describe :from_url do
+    context "with valid url: http://news2.2ch.net/test/read.cgi/newsplus/1000000000/" do
+      subject { Mona::Thread.from_url "http://news2.2ch.net/test/read.cgi/newsplus/1000000000/" }
+      its("board.host") { should == "news2.2ch.net" }
+      its("board.board") { should == "newsplus" }
+      its(:id) { should == 1000000000 }
+    end
+    context "with invalid url" do
+      it do
+        lambda {
+          Mona::Thread.from_url "http://news2.2ch.net/test/hoge/read.cgi/newsplus/1000000000/"
+        }.should raise_error("Invalid Url")
+      end
+    end
+  end
 end
 
 describe Mona::Thread, 'real' do
