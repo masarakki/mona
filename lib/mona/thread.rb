@@ -49,7 +49,7 @@ class Mona::Thread
       @dat_size += res.body.bytesize
       @last_accessed_at = Time.rfc2822(res.header["Last-Modified"].first)
       body = res.body.toutf8
-      pase_body body
+      parse_body body
       body
     end
   end
