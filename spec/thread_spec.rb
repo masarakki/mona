@@ -31,6 +31,11 @@ describe Mona::Thread do
         subject.parse_body test_dat.toutf8
       }.should change(subject, :title).from(nil).to('ウツ病のプログラマーを雇うスレ')
     end
+    it "return array of Response" do
+      response = subject.parse_body test_dat.toutf8
+      response.count.should == 119
+      response.first.should be_a Mona::Response
+    end
   end
 
   describe :from_url do

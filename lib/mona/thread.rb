@@ -38,6 +38,7 @@ class Mona::Thread
   def parse_body(body)
     first = body.lines.first.strip.split(/<>/)
     @title = first[4] if first[4]
+    body.lines.map{ |line| Mona::Response.parse_line(line) }
   end
 
   def reload
@@ -49,8 +50,7 @@ class Mona::Thread
       @dat_size += res.body.bytesize
       @last_accessed_at = Time.rfc2822(res.header["Last-Modified"].first)
       body = res.body.toutf8
-      parse_body body
-      body
+      parse_body(body)
     end
   end
 
