@@ -15,6 +15,7 @@ module Mona
   autoload :Client, 'mona/client'
   autoload :Board, 'mona/board'
   autoload :Thread, 'mona/thread'
+  autoload :Response, 'mona/response'
 
   VERSION_MAJOR = 0
   VERSION_MINOR = 1
