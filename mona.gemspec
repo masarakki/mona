@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "mona"
-  s.version = "0.2.1"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["masarakki"]
-  s.date = "2012-03-01"
+  s.date = "2012-03-31"
   s.description = "talk to 2ch library"
   s.email = "masaki@hisme.net"
   s.extra_rdoc_files = [
@@ -28,11 +28,13 @@ Gem::Specification.new do |s|
     "lib/mona.rb",
     "lib/mona/board.rb",
     "lib/mona/client.rb",
+    "lib/mona/response.rb",
     "lib/mona/thread.rb",
     "mona.gemspec",
     "spec/board_spec.rb",
     "spec/client_spec.rb",
     "spec/mona_spec.rb",
+    "spec/response_spec.rb",
     "spec/spec_helper.rb",
     "spec/test_data/dat.txt",
     "spec/test_data/subject.txt",
@@ -41,7 +43,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/masarakki/mona"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.15"
+  s.rubygems_version = "1.8.21"
   s.summary = "talk 2ch"
 
   if s.respond_to? :specification_version then
