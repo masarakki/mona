@@ -28,8 +28,7 @@ describe Mona::Response do
 
       its(:name) { should == '天使' }
       its(:trip) { should == 'uL5esZLBSE' }
-      its("written_at.to_i") { should == Time.local(2011, 7, 1, 22, 13, 46).to_i }
-      its("written_at.zone") { should == "JST" }
+      its("written_at.to_i") { should == 1309526026 }
       its(:body) { should == "Rubyバカにしてる子ってさ
 変数に＄ついてる言語触ってるって事だよね
 
