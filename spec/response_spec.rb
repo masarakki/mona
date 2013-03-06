@@ -11,7 +11,8 @@ describe Mona::Response do
   describe :ClassMethod do
     describe :parse_name do
       context :with_trip do
-        subject { Mona::Response.parse_name('天使 </b>◆uL5esZLBSE <b>') }
+        before { @response = Mona::Response.parse_name('天使 </b>◆uL5esZLBSE <b>') }
+        subject { @response }
         its(:first) { should == '天使' }
         its(:last) { should == 'uL5esZLBSE' }
       end
@@ -28,8 +29,7 @@ describe Mona::Response do
 
       its(:name) { should == '天使' }
       its(:trip) { should == 'uL5esZLBSE' }
-      its("written_at.to_i") { should == Time.local(2011, 7, 1, 22, 13, 46).to_i }
-      its("written_at.zone") { should == "JST" }
+      its("written_at.to_i") { should == 1309526026 }
       its(:body) { should == "Rubyバカにしてる子ってさ
 変数に＄ついてる言語触ってるって事だよね
 
