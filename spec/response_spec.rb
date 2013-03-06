@@ -11,7 +11,8 @@ describe Mona::Response do
   describe :ClassMethod do
     describe :parse_name do
       context :with_trip do
-        subject { Mona::Response.parse_name('天使 </b>◆uL5esZLBSE <b>') }
+        before { @response = Mona::Response.parse_name('天使 </b>◆uL5esZLBSE <b>') }
+        subject { @response }
         its(:first) { should == '天使' }
         its(:last) { should == 'uL5esZLBSE' }
       end

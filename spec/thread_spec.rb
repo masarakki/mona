@@ -40,7 +40,8 @@ describe Mona::Thread do
 
   describe :from_url do
     context "with valid url: http://news2.2ch.net/test/read.cgi/newsplus/1000000000/" do
-      subject { Mona::Thread.from_url "http://news2.2ch.net/test/read.cgi/newsplus/1000000000/" }
+      before { @thread =  Mona::Thread.from_url  "http://news2.2ch.net/test/read.cgi/newsplus/1000000000/"  }
+      subject { @thread }
       its("board.host") { should == "news2.2ch.net" }
       its("board.board") { should == "newsplus" }
       its(:id) { should == 1000000000 }
